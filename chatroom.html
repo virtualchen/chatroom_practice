@@ -2,36 +2,26 @@
 <html>
 	<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="screen">
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+		<script type="text/javascript" src='bower_components/backbone/backbone.js'></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 		<script src="jquery.websocket.js"></script>
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#status').createWebSocket();
-				$('#board').receiveWebSocket();
-
-				$('#submit').on('click', function() {
-					$.ajax({
-						url: "http://localhost:8080/send",
-						type: "GET",
-						dataType: "json",
-						data: {
-							m: $("#text").val(),
-							u: 'YOU',
-						}
-					});
-				});
-			});
-		</script>
 	</head>
 	<body>
+
+		<script type="text/template" id='tmpl-message'>
+			<div class='alert alert-dismissable alert-info'>
+				<%= data.username %>
+				<%= data.message %>
+			</div>
+		</script>
 
 
 		<div class="container">
 			<div class="col-md-4" id="status">
-				<h2>Connected</h2>
 			</div>
 			<div class="col-md-8" id="board"></div>  
 		</div>
@@ -45,7 +35,7 @@
 				<li><button id="submit" class="btn btn-success">Send</button></li>
 			</ul>
 		</div>
-
+		<script type="text/javascript" src='main.js'></script>
 	</body>
 </html>
 

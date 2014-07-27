@@ -28,7 +28,7 @@ $.fn.createWebSocket = function () {
   if ("WebSocket" in window)
   {
      // Let us open a web socket
-     ws = new WebSocket("ws://localhost:8080/start", ['echo-protocol']);
+     ws = new WebSocket("ws://182.50.155.56:8080/start", ['echo-protocol']);
      ws.onopen = function() {
 	     //div.append("<h2>Done</h2>");
      };
